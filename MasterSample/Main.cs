@@ -15,11 +15,6 @@ namespace MasterSample
 				m.Link(testLevelMasters);
 			}
 
-			foreach (var m in testMasters) {
-
-				Console.WriteLine(m.ToString());
-			}
-
 			//TestMaster.Cultures[cultureType].Levels[level]
 
 
