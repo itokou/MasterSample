@@ -24,16 +24,6 @@ namespace MasterSample
 			{
 				Levels = new Dictionary<int, TestLevelMaster>();
 			}
-
-			public override string ToString ()
-			{
-				string ret = "";
-				foreach (var l in Levels)
-				{
-					ret += string.Format ("[TestCode={0},Level={1},Culture={2}]¥n", l.Value.TestCode, l.Value.Level, l.Value.Culture);
-				}
-				return ret;
-			}
 		}
 
 		public Dictionary<int,TestCultureInfo> Cultures;
@@ -52,15 +42,6 @@ namespace MasterSample
 				}
 				Cultures[m.Culture].Levels[m.Level] = m;
 			}
-		}
-
-		public override string ToString ()
-		{
-			string ret = "";
-			foreach (TestCultureInfo c in Cultures.Values) {
-					ret += c.ToString();
-			}
-			return ret;
 		}
 	}
 
