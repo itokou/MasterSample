@@ -17,13 +17,7 @@ namespace MasterSample
 	{
 		public class TestCultureInfo
 		{
-			public int Culture;
 			public Dictionary<int,TestLevelMaster> Levels;
-
-			public TestCultureInfo()
-			{
-				Levels = new Dictionary<int, TestLevelMaster>();
-			}
 		}
 
 		public Dictionary<int,TestCultureInfo> Cultures;
@@ -39,6 +33,7 @@ namespace MasterSample
 				if(!Cultures.ContainsKey(m.Culture))
 				{
 					Cultures[m.Culture] = new TestCultureInfo();
+					Cultures[m.Culture].Levels = new Dictionary<int, TestLevelMaster>();
 				}
 				Cultures[m.Culture].Levels[m.Level] = m;
 			}
