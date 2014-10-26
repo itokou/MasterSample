@@ -14,30 +14,6 @@ namespace MasterSample
 
 
 			//TestMaster.Cultures[cultureType].Levels[level]
-			Random rand = new Random(DateTime.Now.Millisecond);
-			DateTime time = DateTime.Now;
-
-			for (int i = 0; i < 50000; i++)
-			{
-			}
-
-			TimeSpan span = DateTime.Now - time;
-			Console.WriteLine (span.TotalMilliseconds);
-
-			time = DateTime.Now;
-			for (int i = 0; i < 50000; i++)
-			{
-
-				TestMaster master = testMasters[1];
-				master.GetHashCode();
-				TestLevelMaster levelMaster = master.Cultures[0].Levels[1];
-				//levelMaster.GetHashCode(); 
-			}
-			
-			span = DateTime.Now - time;
-			Console.WriteLine (span.TotalMilliseconds);
-
-
 		}
 
 		public static void UpDateLink<T1,T2>(Dictionary<int, T1> baseMaster,List<T2> linkedData) where T1 : ILinkMaster<T2>
