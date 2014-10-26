@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace MasterSample
 {
-	public partial class TestMaster
+	public partial class TestMaster : ILinkMaster<TestLevelMaster>
 	{
 		public class TestCultureInfo
 		{

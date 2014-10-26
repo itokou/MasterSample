@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 namespace MasterSample
 {
 	class MainClass
@@ -8,26 +8,53 @@ namespace MasterSample
 		public static void Main (string[] args)
 		{
 
-			List<TestMaster> testMasters = GenerateTestMaster ();
+			Dictionary<int,TestMaster> testMasters = GenerateTestMaster ();
 			List<TestLevelMaster> testLevelMasters = GenerateTestLevelMaster ();
+			UpDateLink (testMasters, testLevelMasters);
 
-			foreach (var m in testMasters) {
-				m.Link(testLevelMasters);
-			}
 
 			//TestMaster.Cultures[cultureType].Levels[level]
+			Random rand = new Random(DateTime.Now.Millisecond);
+			DateTime time = DateTime.Now;
 
+			for (int i = 0; i < 50000; i++)
+			{
+			}
+
+			TimeSpan span = DateTime.Now - time;
+			Console.WriteLine (span.TotalMilliseconds);
+
+			time = DateTime.Now;
+			for (int i = 0; i < 50000; i++)
+			{
+
+				TestMaster master = testMasters[1];
+				master.GetHashCode();
+				TestLevelMaster levelMaster = master.Cultures[0].Levels[1];
+				//levelMaster.GetHashCode(); 
+			}
+			
+			span = DateTime.Now - time;
+			Console.WriteLine (span.TotalMilliseconds);
 
 
 		}
 
-		static List<TestMaster> GenerateTestMaster()
+		public static void UpDateLink<T1,T2>(Dictionary<int, T1> baseMaster,List<T2> linkedData) where T1 : ILinkMaster<T2>
 		{
-			List<TestMaster> testMasters = new List<TestMaster> ();
-			for (int i = 0; i < 10; i++) {
+			foreach (var m in baseMaster)
+			{
+				m.Value.Link(linkedData);
+			}
+		}
+
+		static Dictionary<int,TestMaster> GenerateTestMaster()
+		{
+			Dictionary<int,TestMaster> testMasters = new Dictionary<int,TestMaster> ();
+			for (int i = 0; i < 100; i++) {
 				TestMaster master = new TestMaster();
 				master.Code = i+1;
-				testMasters.Add(master);
+				testMasters.Add(master.Code,master);
 			}
 			return testMasters;
 		}
@@ -37,9 +64,9 @@ namespace MasterSample
 			List<TestLevelMaster> masters = new List<TestLevelMaster> ();
 
 			int count = 0;
-			for (int i = 0; i< 10; i++) {
-				for (int j = 0; j < 10; j++) {
-					for (int k = 0; k < 4; k++) {
+			for (int i = 0; i< 100; i++) {
+				for (int j = 0; j < 100; j++) {
+					for (int k = 0; k < 7; k++) {
 						TestLevelMaster master = new TestLevelMaster ();
 						master.Code = count;
 						master.TestCode = i+1;

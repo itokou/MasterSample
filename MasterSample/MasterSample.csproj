@@ -40,6 +40,7 @@
     <Compile Include="TestMaster.cs" />
     <Compile Include="TestLevelMaster.cs" />
     <Compile Include="TestMaster.partial.cs" />
+    <Compile Include="ILinkMaster.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
