@@ -13,35 +13,34 @@ using System.Linq;
 
 namespace MasterSample
 {
-	public partial class TestMaster : ILinkMaster<TestLevelMaster>
-	{
-		public class TestCultureInfo
-		{
+    public partial class TestMaster : ILinkMaster<TestLevelMaster>
+    {
+        public class TestCultureInfo
+        {
             public int Culture;
-			public List<TestLevelMaster> Levels;
-		}
+            public List<TestLevelMaster> Levels;
+        }
 
-		public List<TestCultureInfo> Cultures;
+        public List<TestCultureInfo> Cultures;
 
-		public void Link(List<TestLevelMaster> levelMasters)
-		{
+        public void Link(List<TestLevelMaster> levelMasters)
+        {
             Dictionary<int,TestCultureInfo> culture = new Dictionary<int,TestCultureInfo>();
 
-			 List<TestLevelMaster> myMasters = levelMasters.FindAll (x => x.TestCode == this.Code);
+            List<TestLevelMaster> myMasters = levelMasters.FindAll (x => x.TestCode == this.Code);
 
-			foreach (TestLevelMaster m in myMasters)
-			{
+            foreach (TestLevelMaster m in myMasters)
+            {
                 if (!culture.ContainsKey(m.Culture))
-				{
+                {
                     culture[m.Culture] = new TestCultureInfo();
                     culture[m.Culture].Levels = new List<TestLevelMaster>();
-				}
+                }
                 culture[m.Culture].Levels.Add(m);
-			}
+            }
 
             Cultures = culture.Values.ToList();
-		}
-	}
-
+        }
+    }
 }
 
