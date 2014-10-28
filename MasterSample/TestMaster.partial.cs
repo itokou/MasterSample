@@ -17,26 +17,29 @@ namespace MasterSample
 	{
 		public class TestCultureInfo
 		{
-			public Dictionary<int,TestLevelMaster> Levels;
+            public int Culture;
+			public List<TestLevelMaster> Levels;
 		}
 
-		public Dictionary<int,TestCultureInfo> Cultures;
+		public List<TestCultureInfo> Cultures;
 
 		public void Link(List<TestLevelMaster> levelMasters)
 		{
-			Cultures = new Dictionary<int, TestCultureInfo> ();
+            Dictionary<int,TestCultureInfo> culture = new Dictionary<int,TestCultureInfo>();
 
 			 List<TestLevelMaster> myMasters = levelMasters.FindAll (x => x.TestCode == this.Code);
 
 			foreach (TestLevelMaster m in myMasters)
 			{
-				if(!Cultures.ContainsKey(m.Culture))
+                if (!culture.ContainsKey(m.Culture))
 				{
-					Cultures[m.Culture] = new TestCultureInfo();
-					Cultures[m.Culture].Levels = new Dictionary<int, TestLevelMaster>();
+                    culture[m.Culture] = new TestCultureInfo();
+                    culture[m.Culture].Levels = new List<TestLevelMaster>();
 				}
-				Cultures[m.Culture].Levels[m.Level] = m;
+                culture[m.Culture].Levels.Add(m);
 			}
+
+            Cultures = culture.Values.ToList();
 		}
 	}
 
